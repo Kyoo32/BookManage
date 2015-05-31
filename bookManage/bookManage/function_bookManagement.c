@@ -14,6 +14,40 @@
 #include "line.h"
 
 
+void takeLibraryFromFile(void){
+
+	FILE *fp = fopen("C:\\book\\bookManage\\bookManage\\booklist.txt", "rt");
+	char firstLine = 0;
+	char buffer[100];
+	char genreBuffer[10];
+	
+	if (fp == NULL){
+		puts("Open error");
+	}
+
+	fgets(buffer, 100, fp);
+
+	while (!feof(fp)){
+
+		
+		buffer[0] = NULL;
+		fgets(buffer, 100, fp);
+		if (buffer[0] == NULL || buffer[0] == "\n") continue;
+
+		
+		sscanf(buffer, "%d %s %s", &library[numBook].bookcode, library[numBook].name, genreBuffer);
+		if (!strcmp(genreBuffer, "fiction") )library[numBook].genre = 1;
+		else if (!strcmp(genreBuffer, "nonfiction")) library[numBook].genre = 2;
+	
+	
+		numBook++;
+	}
+	
+
+	fclose(fp);
+
+	return;
+}
 
 void userChoose(char command){
 
@@ -456,7 +490,7 @@ void printLibraryWithFile(void){
 
 	int i = 0;
 
-	FILE *fp = fopen("bookLiist.txt", "w");
+	FILE *fp = fopen("booklist.txt", "w");
 
 	if (fp == NULL){
 		puts("Write error");

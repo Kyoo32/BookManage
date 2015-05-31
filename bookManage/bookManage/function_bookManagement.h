@@ -10,10 +10,9 @@
 #define fUNCTION_BOOKMANAGEMENT_h
 
 #include <stdio.h>
+#include <string.h>
 
-#define BOOK_LEN 50
-#define borrow 99;
-#define yetBorrow 100;
+void takeLibraryFromFile(void);
 
 void userChoose(char command);
 

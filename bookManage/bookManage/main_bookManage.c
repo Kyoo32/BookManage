@@ -16,12 +16,15 @@
 
 int numBook = 0;
 Book *library;
-int librarySize = 1;
+int librarySize = 10;
 
 int main(int argc, const char * argv[]) {
     
+	
     
     library = (Book*)malloc( sizeof(Book) * librarySize );
+
+	takeLibraryFromFile();
     
 	show_logo();
 
